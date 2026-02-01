@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: college-erp-app
+  name: college-app
   namespace: argocd
   annotations:
      # Assign alias 'chai-app' to your image
