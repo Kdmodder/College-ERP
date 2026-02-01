@@ -39,7 +39,7 @@ jobs:
 
     - name: Push Docker image
       run: |
-        docker push kdmodder/college-erp:${NEW_VERSION}
+        docker push kdmodder/college:${NEW_VERSION}
 
     - name: Commit updated VERSION
       run: |
