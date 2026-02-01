@@ -23,6 +23,7 @@ spec:
     repoURL: https://github.com/kdmodder/College-ERP.git
     targetRevision: main
     path: kubernetes
+    kustomize: {}
 
   destination:
     server: https://kubernetes.default.svc
