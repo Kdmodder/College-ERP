@@ -1,3 +1,3 @@
 kustomize:
   images:
-  - kdmodder/college:v1.0.7
+  - kdmodder/college:1.0.8
