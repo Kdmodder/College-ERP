@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: college-app
+  namespace: college-app
+  labels:
+    app: college-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: college-app
+  template:
+    metadata:
+      labels:
+        app: college-app
+    spec:
+      containers:
+        - name: college-app
+          image: kdmodder/college:v1.0.4
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_ENGINE
+              value: django.db.backends.postgresql
+            - name: DB_NAME
+              value: college_erp
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+            - name: DB_HOST
+              value: postgres
+            - name: DB_PORT
+              value: "5432"
+

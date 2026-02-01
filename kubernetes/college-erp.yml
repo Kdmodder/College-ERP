@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: college-erp-app
+  namespace: argocd
+  annotations:
+     # Assign alias 'chai-app' to your image
+    argocd-image-updater.argoproj.io/image-list: chai-app=kdmodder/college # Maps the image alias 'chai-app' to your DockerHub image
+
+    # Use git write-back
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-image-updater-git-creds # Configures image updater to write changes back to Git using provided secret
+
+    # Update strategy for chai-app image
+    argocd-image-updater.argoproj.io/college-app.update-strategy: semver # Uses semantic versioning for image updates
+    
+    notifications.argoproj.io/subscribe.on-health-degraded.email: "sureshkundan913@gmail.com"
+    notifications.argoproj.io/subscribe.on-deployed.email: "sureshkundan913@gmail.com"
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/kdmodder/College-ERP.git
+    targetRevision: main
+    path: kubernetes
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: college-app
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+
+ 
