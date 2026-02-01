@@ -39,7 +39,7 @@ jobs:
     - name: Trivy scan continue-on-error
       uses: aquasecurity/trivy-action@0.20.0
       with:
-         image-ref: kdmodder/college:${NEW_VERSION}
+         image-ref: kdmodder/college:${{ env.NEW_VERSION }}
          severity: CRITICAL,HIGH
          exit-code: 1
          format: table
