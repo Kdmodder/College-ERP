@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
   annotations:
      # Assign alias 'chai-app' to your image
-    argocd-image-updater.argoproj.io/image-list: college-app=kdmodder/college # Maps the image alias 'chai-app' to your DockerHub image
+    argocd-image-updater.argoproj.io/image-list: college-app=kdmodder/college # Maps the image alias 'college-app' to your DockerHub image
 
     # Use git write-back
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-image-updater-git-creds # Configures image updater to write changes back to Git using provided secret
