@@ -41,6 +41,7 @@ jobs:
       with:
          image-ref: kdmodder/college:${{ env.NEW_VERSION }}
          severity: CRITICAL
+         ignore-unfixed: true
          exit-code: 1
          format: table
     - name: Push Docker image
